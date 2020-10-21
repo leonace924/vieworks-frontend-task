@@ -8,7 +8,7 @@ const Duration = ({ seconds, ...props }) => {
   );
 };
 
-function format(seconds) {
+const format = (seconds) => {
   const date = new Date(seconds * 1000);
   const hh = date.getUTCHours();
   const mm = date.getUTCMinutes();
@@ -17,10 +17,10 @@ function format(seconds) {
     return `${hh}:${pad(mm)}:${ss}`;
   }
   return `${mm}:${ss}`;
-}
+};
 
-function pad(string) {
+const pad = (string) => {
   return ("0" + string).slice(-2);
-}
+};
 
 export default Duration;

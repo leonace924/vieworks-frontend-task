@@ -14,6 +14,7 @@ function App() {
         <Row className="justify-content-center">
           <Col md="8">
             <VideoPlayer url="https://www.youtube.com/watch?v=70wvnG8Oo1E" />
+            {/* <VideoPlayer url="https://vimeo.com/446827718" /> */}
           </Col>
         </Row>
       </Container>

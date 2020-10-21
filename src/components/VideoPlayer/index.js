@@ -5,13 +5,13 @@ import Duration from "../Duration";
 import VideoPlayerContainer from "./index.style";
 
 const VideoPlayer = ({ url }) => {
-  const [duration, SetDuration] = useState(0);
   const [videoControls, setVideoControls] = useState({});
 
   const handlePlay = () => {
     setVideoControls({
       ...videoControls,
       playing: true,
+      ended: false,
     });
   };
 
@@ -22,11 +22,13 @@ const VideoPlayer = ({ url }) => {
     });
   };
 
-  const handleProgress = ({ loaded, played }) => {
+  const handleProgress = ({ loaded, played, loadedSeconds, playedSeconds }) => {
     setVideoControls({
       ...videoControls,
       loaded: loaded,
-      played: played,
+      played: played * 100,
+      loadedSeconds: loadedSeconds,
+      playedSeconds: playedSeconds,
     });
   };
 
@@ -39,7 +41,10 @@ const VideoPlayer = ({ url }) => {
   };
 
   const handleDuration = (duration) => {
-    SetDuration(duration);
+    setVideoControls({
+      ...videoControls,
+      duration: duration,
+    });
   };
 
   return (
@@ -47,15 +52,19 @@ const VideoPlayer = ({ url }) => {
       <Row className="justify-content-center">
         <Col md="12">
           <Row className="justify-content-center">
-            <ReactPlayer
-              url={url}
-              onStart={() => console.log("onStart")}
-              onPlay={handlePlay}
-              onPause={handlePause}
-              onEnded={handleEnded}
-              onProgress={handleProgress}
-              onDuration={handleDuration}
-            />
+            <div className="player-wrapper">
+              <ReactPlayer
+                url={url}
+                onStart={() => console.log("onStart")}
+                controls={true}
+                onPlay={handlePlay}
+                onPause={handlePause}
+                onEnded={handleEnded}
+                onProgress={handleProgress}
+                onDuration={handleDuration}
+                className="react-player"
+              />
+            </div>
           </Row>
         </Col>
       </Row>
@@ -64,8 +73,19 @@ const VideoPlayer = ({ url }) => {
         <Col md="12">
           <h3>Video Events</h3>
         </Col>
-        <Col md="12">
-          Duration: <Duration seconds={duration} />
+        <Col md="6">
+          Duration:{" "}
+          <Duration
+            seconds={videoControls.duration ? videoControls.duration : 0}
+          />
+        </Col>
+        <Col md="6">
+          Loaded:{" "}
+          <Duration
+            seconds={
+              videoControls.loadedSeconds ? videoControls.loadedSeconds : 0
+            }
+          />
         </Col>
         <Col md="12">
           Status:{" "}
@@ -78,8 +98,7 @@ const VideoPlayer = ({ url }) => {
             : "Video is not Started yet"}
         </Col>
         <Col md="12">
-          Elapsed:{" "}
-          {videoControls.played ? videoControls.played.toFixed(3) * 100 : 0} %
+          Elapsed: {videoControls.played ? videoControls.played.toFixed(2) : 0}%
         </Col>
       </Row>
     </VideoPlayerContainer>
