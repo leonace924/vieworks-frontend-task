@@ -89,16 +89,19 @@ const VideoPlayer = ({ url }) => {
         </Col>
         <Col md="12">
           Status:{" "}
-          {videoControls.playing
-            ? "Video is Playing"
-            : videoControls.ended
-            ? "Video is Ended"
-            : videoControls.played > 0
-            ? "Video is Paused"
-            : "Video is not Started yet"}
+          <b>
+            {videoControls.playing
+              ? "Video is Playing"
+              : videoControls.ended
+              ? "Video is Ended"
+              : videoControls.played > 0
+              ? "Video is Paused"
+              : "Video is not Started yet"}
+          </b>
         </Col>
         <Col md="12">
-          Elapsed: {videoControls.played ? videoControls.played.toFixed(2) : 0}%
+          Elapsed:{" "}
+          <b>{videoControls.played ? videoControls.played.toFixed(2) : 0}</b>%
         </Col>
       </Row>
     </VideoPlayerContainer>

@@ -1,6 +1,9 @@
-# viewworks-frontend-test
+# Viewworks Frontend Test
 
-Vieworks company Front-end challenge
+## Overview
+
+This project is for Vieworks company Front-end challenge.
+This project detects the event and controls for video using `react-player` and `styled-component`.
 
 ## Task Description
 
@@ -14,3 +17,15 @@ write console log or any other way you choose to collect events.
 You can impress us if you can calculate how much percentage of the video is watched. If
 a user watched until the middle of the video, the percentage should be %50, if ​¾​ of the video
 watched percentage should be %75
+
+## Project setup
+
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+
+```
+npm start
+```
