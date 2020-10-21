@@ -1,9 +1,9 @@
-# Viewworks Frontend Test
+# Vieworks Frontend Test
 
 ## Overview
 
 This project is for Vieworks company Front-end challenge.
-This project detects the event and controls for video using `react-player` and `styled-component`.
+This one detects the event and controls for video(eg: Youtube, Vimeo, ...) using `react-player` and `styled-components`.
 
 ## Task Description
 
