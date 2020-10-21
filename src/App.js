@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import VideoPlayer from "./components/VideoPlayer";
+import { Container, Row, Col } from "react-bootstrap";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+        <Row className="justify-content-center">
+          <h2>Video Control</h2>
+        </Row>
+
+        <Row className="justify-content-center">
+          <Col md="8">
+            <VideoPlayer url="https://www.youtube.com/watch?v=70wvnG8Oo1E" />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
